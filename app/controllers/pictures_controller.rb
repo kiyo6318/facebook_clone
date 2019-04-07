@@ -14,9 +14,17 @@ class PicturesController < ApplicationController
 
   # GET /pictures/new
   def new
-    @picture = Picture.new
+    if params[:back]
+      @picture = Picture.new(picture_params)
+    else
+      @picture = Picture.new
+    end
   end
 
+  def confirm
+    @picture = Picture.new(picture_params)
+    render :new if @picture.invalid?
+  end
   # GET /pictures/1/edit
   def edit
   end
