@@ -23,7 +23,7 @@ class PicturesController < ApplicationController
 
   def confirm
     @picture = Picture.new(picture_params)
-    binding.pry
+    @picture.user_id = current_user.id
     render :new if @picture.invalid?
   end
   # GET /pictures/1/edit
@@ -34,6 +34,7 @@ class PicturesController < ApplicationController
   # POST /pictures.json
   def create
     @picture = Picture.new(picture_params)
+    @picture.user_id = current_user.id
 
     respond_to do |format|
       if @picture.save
