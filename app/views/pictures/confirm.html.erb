@@ -2,11 +2,14 @@
 <%= form_with(model: @picture,url:pictures_path,local:true) do |form| %>
 <%= form.hidden_field :word %>
 <%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+<br>
 <%= form.hidden_field :image_cache %>
-<%= form.submit "投稿する" %>
+<br>
+<%= form.button "投稿する",class: "btn btn-success" %>
 <% end %>
+<br>
 
 <%= form_with(model:@picture,url:new_picture_path,local:true,method:"get") do |form|%>
 <%= form.hidden_field :image_cache %>
-<%= form.submit "戻る",name:"back" %>
+<%= form.button "戻る",name:"back",class: "btn btn-info" %>
 <% end %>
