@@ -1,7 +1,8 @@
 <h3>以下の内容でよろしいですか？</h3>
 <%= form_with(model: @picture,url:pictures_path,local:true) do |form| %>
 <%= form.hidden_field :word %>
-<%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %>
+  <div class="col-xs-12"><%= @picture.word %></div>
+  <div class="col-xs-12"><%= image_tag(@picture.image.url) if @picture.image && @picture.image.url %></div>
 <br>
 <%= form.hidden_field :image_cache %>
 <br>
